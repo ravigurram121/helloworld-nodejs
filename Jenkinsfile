@@ -4,6 +4,11 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '2'))
     skipDefaultCheckout true
   }
+  
+   triggers {
+    eventTrigger simpleMatch('hello-api-deploy-event')
+  }
+  
   stages {
     stage('Test') {
             agent {
